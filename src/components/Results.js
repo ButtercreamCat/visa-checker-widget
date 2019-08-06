@@ -4,13 +4,15 @@ import { List, Avatar, Button, Icon } from "antd";
 
 class Results extends Component {
   render() {
-    if (this.props.entryRequirements !== []) {
-      const resultsArr = this.props.entryRequirements;
+    const { entryRequirements, localization, isLoading } = this.props;
+    if (entryRequirements !== []) {
+      const resultsArr = entryRequirements;
       return (
         <div>
           <List
             itemLayout="vertical"
             size="large"
+            loading={isLoading}
             locale={{
               emptyText: (
                 <div>
@@ -37,7 +39,7 @@ class Results extends Component {
                   title={item.visa[0].textual.text[0]}
                   description={
                     item.visa[0].allowedStay
-                      ? `${this.props.localization.messages.allowedToStay} ${
+                      ? `${localization.messages.allowedToStay} ${
                           item.visa[0].allowedStay
                         }`
                       : ""
@@ -58,7 +60,7 @@ class Results extends Component {
                       href={item.visa[0].availableVisas[0].productRedirectUrl}
                       type="primary"
                     >
-                      {this.props.localization.applyBtn}
+                      {localization.applyBtn}
                       <Icon type="right" />
                     </Button>
                   ) : (
@@ -79,7 +81,8 @@ class Results extends Component {
 function mapStateToProps(state) {
   return {
     entryRequirements: state.entryRequirements,
-    localization: state.localization
+    localization: state.localization,
+    isLoading: state.isLoading
   };
 }
 

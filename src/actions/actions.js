@@ -5,7 +5,9 @@ import {
   SET_LOCALIZATION,
   SET_CITIZENSHIP,
   SET_DESTINATIONS,
-  SET_ENTRY_REQUIREMENTS
+  SET_ENTRY_REQUIREMENTS,
+  START_LOADING,
+  FINISH_LOADING
 } from "../constants/actionTypes";
 // AXIOS
 import axios from "axios";
@@ -89,6 +91,7 @@ export function loadEntryRequirements(citizenship, destinations, language) {
         const filteredResults = results.map(result => result.data);
         console.log(filteredResults);
         dispatch(setEntryRequirements(filteredResults));
+        dispatch(finishLoading());
       })
     );
   };
@@ -98,5 +101,19 @@ function setEntryRequirements(data) {
   return {
     type: SET_ENTRY_REQUIREMENTS,
     payload: data
+  };
+}
+
+// ********* START_LOADING *********
+export function startLoading() {
+  return {
+    type: START_LOADING
+  };
+}
+
+// ********* FINISH_LOADING *********
+export function finishLoading() {
+  return {
+    type: FINISH_LOADING
   };
 }

@@ -5,6 +5,7 @@ import localization from "./localization";
 import citizenship from "./citizenship";
 import destinations from "./destinations";
 import entryRequirements from "./entryRequirements";
+import isLoading from "./isLoading";
 
 export default combineReducers({
   language,
@@ -12,5 +13,6 @@ export default combineReducers({
   localization,
   citizenship,
   destinations,
-  entryRequirements
+  entryRequirements,
+  isLoading
 });
