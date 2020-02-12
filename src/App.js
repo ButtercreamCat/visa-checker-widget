@@ -21,7 +21,11 @@ class App extends React.Component {
     return (
       <Card
         title={
-          <img src="/assets/sherpa-logo.svg" alt="logo" style={{ width: 80 }} />
+          <img
+            src="/assets/sherpa-logo.svg"
+            alt="sherpa-logo"
+            style={{ width: 80 }}
+          />
         }
         extra={<LanguageSelector />}
         style={{
@@ -43,7 +47,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(
-  null,
-  { loadLocalization }
-)(App);
+export default connect(null, { loadLocalization })(App);
